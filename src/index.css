@@ -9,13 +9,13 @@
   --color-primary: #1b3022;
   --color-secondary: #625e50;
   --color-background: #fbf9f8;
-  --color-almond: #F5EEDC;
   --color-surface: #fbf9f8;
   --color-on-surface: #1b1c1c;
   --color-on-surface-variant: #434843;
   --color-outline-variant: #c3c8c1;
   --color-secondary-container: #e9e2d0;
   --color-on-primary: #ffffff;
+  --color-pale-gold: #E3C58B;
 }
 
 @layer base {

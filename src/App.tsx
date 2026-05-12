@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Trees, 
   Menu, 
@@ -23,9 +23,7 @@ import {
   Flower2, 
   Paintbrush,
   X,
-  Instagram,
-  Facebook,
-  Linkedin
+  Facebook
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -55,6 +53,11 @@ const IMAGES = {
   portfolio7: 'https://res.cloudinary.com/didqabx8q/image/upload/v1778519285/674586267_122211793640546664_9180346334306613241_n_tlfk2s.jpg',
   portfolio8: 'https://res.cloudinary.com/didqabx8q/image/upload/v1778519284/670409331_122210359904546664_6907401501019976810_n_x87hct.jpg',
   logo: 'https://res.cloudinary.com/didqabx8q/image/upload/v1778518217/462079176_122108903012546664_6337647890782225812_n_fu3e4m.jpg',
+  meticulous: 'https://res.cloudinary.com/didqabx8q/image/upload/v1778601039/687051595_122213653106546664_2602345084358482647_n_wuep5r.jpg',
+  corporateNhs: 'https://res.cloudinary.com/didqabx8q/image/upload/v1778601401/657259747_122209164242546664_7148954046927616758_n_qoofxo.jpg',
+  galleryItem1: 'https://res.cloudinary.com/didqabx8q/image/upload/v1778601851/658397020_122208779078546664_3826606235566457352_n_ubbxtr.jpg',
+  galleryItem2: 'https://res.cloudinary.com/didqabx8q/image/upload/v1778601851/646159094_122206132736546664_8812014559590832507_n_js4ikw.jpg',
+  galleryItem3: 'https://res.cloudinary.com/didqabx8q/image/upload/v1778601851/654618801_122207802806546664_9205214813508603010_n_itpvyo.jpg',
 };
 
 // --- Shared Components ---
@@ -68,7 +71,7 @@ function Header({ currentView, setView }: { currentView: View, setView: (v: View
         <div id="logo-section" className="flex items-center gap-3 cursor-pointer" onClick={() => setView('home')}>
           <img src={IMAGES.logo} alt="Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain rounded-full border border-outline-variant/30 shadow-sm" />
           <h1 className="font-display text-lg md:text-xl tracking-tight text-primary font-bold">
-            The Little Garden <span className="text-secondary">&amp;</span> Painting Co.
+            The little Garden <span className="text-pale-gold">&amp;</span> Painting Company
           </h1>
         </div>
 
@@ -102,7 +105,7 @@ function Header({ currentView, setView }: { currentView: View, setView: (v: View
           </div>
             <button 
               onClick={() => setView('enquiry')} 
-              className={`px-8 py-3 bg-primary text-on-primary font-sans text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-all flex items-center justify-center ${currentView === 'enquiry' ? 'ring-2 ring-primary ring-offset-2' : ''}`}
+              className={`px-8 py-3 bg-pale-gold text-primary font-sans text-xs uppercase tracking-[0.2em] hover:bg-pale-gold/90 transition-all flex items-center justify-center ${currentView === 'enquiry' ? 'ring-2 ring-primary ring-offset-2' : ''}`}
             >
               Enquire
             </button>
@@ -150,7 +153,7 @@ function Header({ currentView, setView }: { currentView: View, setView: (v: View
               </button>
               <button 
                 onClick={() => { setView('enquiry'); setIsMenuOpen(false); }} 
-                className={`px-12 py-4 bg-primary text-on-primary font-sans text-sm uppercase tracking-[0.2em] w-full text-center ${currentView === 'enquiry' ? 'ring-2 ring-white ring-inset' : ''}`}
+                className={`px-12 py-4 bg-pale-gold text-primary font-sans text-sm uppercase tracking-[0.2em] w-full text-center ${currentView === 'enquiry' ? 'ring-2 ring-primary ring-inset' : ''}`}
               >
                 Enquire
               </button>
@@ -169,7 +172,7 @@ function Footer() {
         <div id="footer-about" className="space-y-6">
           <div className="flex items-center gap-3">
             <img src={IMAGES.logo} alt="Logo" className="w-8 h-8 object-contain rounded-full border border-white/10" />
-            <span className="font-display text-xl tracking-tight">The Little Garden &amp; Painting Co.</span>
+            <span className="font-display text-xl tracking-tight">The little Garden &amp; Painting Company</span>
           </div>
           <p className="font-body opacity-60 max-w-xs leading-relaxed italic">
             Meticulous care for residential estates and heritage properties across the South East.
@@ -178,7 +181,7 @@ function Footer() {
 
         <div id="footer-links" className="grid grid-cols-2 gap-8">
           <div className="space-y-4">
-            <h4 className="font-sans text-xs uppercase tracking-widest text-on-primary font-bold">Discovery</h4>
+            <h4 className="font-sans text-xs uppercase tracking-widest text-pale-gold font-bold">Discovery</h4>
             <nav className="flex flex-col gap-2 opacity-60 font-body text-sm">
               <a href="#" className="hover:opacity-100 transition-opacity">Our Craft</a>
               <a href="#" className="hover:opacity-100 transition-opacity">Sustainability</a>
@@ -186,7 +189,7 @@ function Footer() {
             </nav>
           </div>
           <div className="space-y-4">
-            <h4 className="font-sans text-xs uppercase tracking-widest text-on-primary font-bold">Legal</h4>
+            <h4 className="font-sans text-xs uppercase tracking-widest text-pale-gold font-bold">Legal</h4>
             <nav className="flex flex-col gap-2 opacity-60 font-body text-sm">
               <a href="#" className="hover:opacity-100 transition-opacity">Privacy</a>
               <a href="#" className="hover:opacity-100 transition-opacity">Terms</a>
@@ -195,9 +198,9 @@ function Footer() {
         </div>
 
         <div id="footer-contact" className="space-y-6">
-          <h4 className="font-sans text-xs uppercase tracking-widest text-on-primary font-bold">Contact</h4>
+          <h4 className="font-sans text-xs uppercase tracking-widest text-pale-gold font-bold">Contact</h4>
           <p className="font-body opacity-60 text-sm italic">Based in the Cotswolds,<br />Serving the Greater Region.</p>
-          <a href="mailto:wheatonmike38@outlook.com" className="block font-sans text-xs uppercase tracking-widest text-on-primary underline underline-offset-8 decoration-white/20">
+          <a href="mailto:wheatonmike38@outlook.com" className="block font-sans text-xs uppercase tracking-widest text-on-primary underline underline-offset-8 decoration-pale-gold/30">
             wheatonmike38@outlook.com
           </a>
           <a href="tel:+447365848799" className="block font-sans text-xs uppercase tracking-widest text-on-primary mt-4 opacity-80 hover:opacity-100 transition-opacity">
@@ -209,9 +212,9 @@ function Footer() {
       <div id="footer-bottom" className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="font-sans uppercase tracking-widest text-[10px] opacity-40">© 2024 Crafted Heritage Group</p>
         <div className="flex gap-6 opacity-40">
-          <Instagram className="w-4 h-4 cursor-pointer hover:opacity-100 transition-opacity" />
-          <Facebook className="w-4 h-4 cursor-pointer hover:opacity-100 transition-opacity" />
-          <Linkedin className="w-4 h-4 cursor-pointer hover:opacity-100 transition-opacity" />
+          <a href="https://www.facebook.com/profile.php?id=61566399947267" target="_blank" rel="noopener noreferrer">
+            <Facebook className="w-5 h-5 cursor-pointer hover:opacity-100 transition-opacity" />
+          </a>
         </div>
       </div>
     </footer>
@@ -289,9 +292,9 @@ function HomeView({ setView }: { setView: (v: View) => void }) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <span className="font-sans text-[10px] uppercase tracking-[0.4em] text-almond mb-8 block">Artisanal Heritage &amp; Care</span>
+            <span className="font-sans text-[10px] uppercase tracking-[0.4em] text-pale-gold mb-8 block">Artisanal Heritage &amp; Care</span>
             <h1 className="font-display text-5xl md:text-[8rem] text-on-primary leading-[0.85] italic mb-12">
-              The Little <br /> Garden Co.
+              The little Garden <br /> &amp; Painting Company
             </h1>
           </motion.div>
 
@@ -299,7 +302,7 @@ function HomeView({ setView }: { setView: (v: View) => void }) {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="font-body text-xl md:text-3xl text-almond/80 italic max-w-2xl mx-auto leading-relaxed"
+            className="font-body text-xl md:text-3xl text-pale-gold/80 italic max-w-2xl mx-auto leading-relaxed"
           >
             "Curating sanctuaries of natural elegance and structural precision for the South East's most distinguished estates."
           </motion.p>
@@ -312,7 +315,7 @@ function HomeView({ setView }: { setView: (v: View) => void }) {
           >
             <button 
               onClick={() => setView('services')}
-              className="px-12 py-5 bg-almond text-primary font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-2xl hover:scale-105 transition-all"
+              className="px-12 py-5 bg-pale-gold text-primary font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-2xl hover:scale-105 transition-all"
             >
               Our Services
             </button>
@@ -336,37 +339,61 @@ function HomeView({ setView }: { setView: (v: View) => void }) {
         </motion.div>
       </section>
 
-      {/* Brand Philosophy */}
-      <section className="py-32 px-6 bg-background">
+      {/* Our Philosophy Section */}
+      <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
-          <div className="space-y-12">
-            <span className="font-sans text-[10px] text-secondary uppercase tracking-[0.3em]">Our Philosophy</span>
-            <h2 className="font-display text-4xl md:text-6xl text-primary italic leading-tight">
-              Meticulousness is the root of beauty.
-            </h2>
-            <p className="font-body text-xl text-on-surface-variant italic leading-relaxed">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <div className="space-y-4">
+              <span className="font-sans text-[10px] text-pale-gold uppercase tracking-[0.3em] block">Our Philosophy</span>
+              <h2 className="font-display text-5xl md:text-7xl text-primary italic leading-tight">
+                Meticulousness is the root of beauty.
+              </h2>
+            </div>
+            
+            <p className="font-body text-xl text-on-surface-variant italic leading-relaxed max-w-lg">
               We believe that a garden is a living portrait, and a home is its frame. Our artisanal approach combines traditional horticultural wisdom with modern structural refinement to create cohesive, breathtaking living spaces.
             </p>
+
             <div className="grid grid-cols-2 gap-12 pt-8">
               <div className="space-y-2">
-                <span className="font-display text-3xl text-primary">01</span>
-                <p className="font-sans text-[10px] uppercase tracking-widest opacity-60">Organic Integrity</p>
+                <span className="font-display text-3xl text-pale-gold">01</span>
+                <p className="font-sans text-[10px] uppercase tracking-widest opacity-60 font-bold">Organic Integrity</p>
               </div>
               <div className="space-y-2">
-                <span className="font-display text-3xl text-primary">02</span>
-                <p className="font-sans text-[10px] uppercase tracking-widest opacity-60">Structural Precision</p>
+                <span className="font-display text-3xl text-pale-gold">02</span>
+                <p className="font-sans text-[10px] uppercase tracking-widest opacity-60 font-bold">Structural Precision</p>
               </div>
             </div>
-          </div>
-          <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative">
-            <img src={IMAGES.estateCare} alt="Estate Care" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl"></div>
-          </div>
+
+            <div className="pt-8">
+              <button 
+                onClick={() => setView('services')}
+                className="font-sans text-[10px] uppercase tracking-widest text-primary border-b border-pale-gold pb-2 hover:text-pale-gold transition-colors font-bold"
+              >
+                Our Methodology
+              </button>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-3xl relative"
+          >
+            <img src={IMAGES.meticulous} alt="Artisanal Work" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-[3rem]"></div>
+          </motion.div>
         </div>
       </section>
 
       {/* Quick Links / Featured Shots */}
-      <section className="py-32 bg-almond/20 px-6">
+      <section className="py-32 bg-pale-gold/5 px-6">
         <div className="max-w-7xl mx-auto flex flex-col gap-24">
           <div className="flex justify-between items-end">
             <div className="space-y-4">
@@ -377,9 +404,9 @@ function HomeView({ setView }: { setView: (v: View) => void }) {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[IMAGES.lookbook1, IMAGES.lookbook2, IMAGES.lookbook3].map((img, i) => (
+            {[IMAGES.meticulous, IMAGES.galleryItem1, IMAGES.galleryItem2].map((img, i) => (
               <div key={i} className="aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer">
-                <img src={img} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0" alt="Work" />
+                <img src={img} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Work" />
               </div>
             ))}
           </div>
@@ -387,14 +414,14 @@ function HomeView({ setView }: { setView: (v: View) => void }) {
       </section>
 
       {/* Testimonial / Quote */}
-      <section className="py-48 px-6 bg-primary text-white text-center">
+      <section className="py-48 px-6 bg-pale-gold text-primary text-center">
         <div className="max-w-3xl mx-auto space-y-12">
-          <HeartPulse className="w-12 h-12 text-secondary/40 mx-auto" />
+          <HeartPulse className="w-12 h-12 text-primary/20 mx-auto" />
           <p className="font-display text-3xl md:text-5xl italic leading-tight">
             "They transformed our neglected estate into a place of profound peace and structural elegance. It is more than a garden; it is a sanctuary."
           </p>
           <div className="flex flex-col items-center">
-            <div className="w-16 h-px bg-white/20 mb-6"></div>
+            <div className="w-16 h-px bg-primary/20 mb-6"></div>
             <span className="font-sans text-[10px] uppercase tracking-widest opacity-60">The Hamilton Family — Surrey</span>
           </div>
         </div>
@@ -412,7 +439,7 @@ function ServicesView({ setView }: { setView: (v: View) => void }) {
       className="pb-24 pt-32"
     >
       <section className="px-6 py-16 md:py-24 max-w-4xl mx-auto text-center md:text-left mb-12">
-        <span className="font-sans text-[10px] text-secondary uppercase tracking-[0.3em] mb-4 block">Bespoke Offerings</span>
+        <span className="font-sans text-[10px] text-pale-gold uppercase tracking-[0.3em] mb-4 block">Bespoke Offerings</span>
         <h1 className="font-display text-5xl md:text-7x text-primary italic mb-8">Our Services</h1>
         <p className="font-body text-xl text-on-surface-variant italic leading-relaxed max-w-2xl">
           From the initial consultation to seasonal maintenance, we provide a holistic approach to residence care.
@@ -420,7 +447,7 @@ function ServicesView({ setView }: { setView: (v: View) => void }) {
       </section>
 
       {/* Trust Bar */}
-      <section id="trust-bar" className="bg-primary text-white py-6 overflow-hidden border-y border-white/10 mb-20">
+      <section id="trust-bar" className="bg-pale-gold text-primary py-6 overflow-hidden border-y border-primary/10 mb-20">
         <div className="flex items-center justify-center whitespace-nowrap overflow-hidden">
           <div className="flex items-center gap-16 px-6 animate-scroll">
             {[1, 2, 3].map((i) => (
@@ -449,7 +476,7 @@ function ServicesView({ setView }: { setView: (v: View) => void }) {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h3 className="font-display text-4xl md:text-5xl text-primary">Garden Maintenance</h3>
-              <div className="h-px bg-outline-variant w-24"></div>
+              <div className="h-px bg-pale-gold/40 w-24"></div>
               <p className="font-body text-lg text-on-surface-variant leading-relaxed italic">
                 Tailored pricing models for discerning clients. From one-off seasonal tidying to comprehensive annual maintenance programs.
               </p>
@@ -471,12 +498,12 @@ function ServicesView({ setView }: { setView: (v: View) => void }) {
             </div>
             <div className="order-1 md:order-2 space-y-8">
               <h3 className="font-display text-4xl md:text-5xl text-primary">Professional Painting</h3>
-              <div className="h-px bg-outline-variant w-24"></div>
+              <div className="h-px bg-pale-gold/40 w-24"></div>
               <p className="font-body text-lg text-on-surface-variant leading-relaxed italic">
                 Exquisite finishes for your garden boundaries and interiors. Our specialist crew ensures a durable, boutique-quality application.
               </p>
               <div className="flex items-baseline gap-4 mt-4">
-                <span className="font-display text-2xl text-primary">£20</span>
+                <span className="font-display text-2xl text-pale-gold font-bold">£20</span>
                 <span className="font-sans text-[10px] uppercase tracking-widest opacity-60">per hour / worker</span>
               </div>
             </div>
@@ -484,8 +511,13 @@ function ServicesView({ setView }: { setView: (v: View) => void }) {
         </div>
       </section>
 
+      {/* Section with Gold Accent */}
+      <section className="py-24 bg-pale-gold/5 flex justify-center">
+        <div className="w-24 h-1 bg-pale-gold/30 rounded-full"></div>
+      </section>
+
       {/* NHS Feature */}
-      <section id="nhs-feature" className="bg-almond py-32 px-6 mt-32">
+      <section id="nhs-feature" className="bg-pale-gold/10 py-32 px-6">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <HeartPulse className="w-12 h-12 text-primary/40 mx-auto" />
           <h2 className="font-display text-4xl text-primary italic">A Partnership with the NHS</h2>
@@ -506,13 +538,17 @@ function ServicesView({ setView }: { setView: (v: View) => void }) {
 
 function GalleryView({ setView }: { setView: (v: View) => void }) {
   const images = [
+    IMAGES.meticulous,
+    IMAGES.corporateNhs,
+    IMAGES.galleryItem1,
+    IMAGES.galleryItem2,
+    IMAGES.galleryItem3,
     IMAGES.lookbook1,
     IMAGES.lookbook2,
     IMAGES.lookbook3,
     IMAGES.lookbook4,
     IMAGES.portfolio1,
     IMAGES.portfolio2,
-    IMAGES.portfolio3,
     IMAGES.portfolio4,
     IMAGES.lookbook5,
     IMAGES.lookbook6,
@@ -531,7 +567,11 @@ function GalleryView({ setView }: { setView: (v: View) => void }) {
       className="pb-24 pt-32 px-6 md:px-16"
     >
       <div className="max-w-7xl mx-auto space-y-12">
-        <h1 className="font-display text-5xl md:text-7xl text-primary mb-16 italic text-center">Gallery</h1>
+        <div className="flex flex-col items-center gap-4 mb-16">
+          <span className="font-sans text-[10px] text-pale-gold uppercase tracking-[0.3em]">Artisanal Portfolio</span>
+          <h1 className="font-display text-5xl md:text-7xl text-primary italic text-center">Gallery</h1>
+          <div className="w-12 h-px bg-pale-gold/40"></div>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {images.map((img, idx) => (
@@ -555,12 +595,12 @@ function GalleryView({ setView }: { setView: (v: View) => void }) {
 
       {/* CTA Box */}
       <section className="mt-32">
-        <div className="bg-primary text-white rounded-[2rem] p-16 md:p-24 text-center max-w-7xl mx-auto overflow-hidden relative">
+        <div className="bg-pale-gold text-primary rounded-[2rem] p-16 md:p-24 text-center max-w-7xl mx-auto overflow-hidden relative shadow-2xl">
           <div className="relative z-10">
             <h2 className="font-display text-4xl md:text-6xl mb-12 italic">Commence your own transformation.</h2>
             <button 
               onClick={() => setView('enquiry')}
-              className="bg-surface text-primary px-12 py-5 rounded-full font-sans text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl font-bold inline-block"
+              className="bg-pale-gold text-primary px-12 py-5 rounded-full font-sans text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl font-bold inline-block"
             >
               Schedule Consultation
             </button>
@@ -592,7 +632,9 @@ function EnquiryView() {
     >
       <div className="max-w-4xl mx-auto space-y-16">
         <div className="text-center space-y-4">
+          <span className="font-sans text-[10px] text-pale-gold uppercase tracking-[0.3em] block">Connect With Us</span>
           <h1 className="font-display text-5xl md:text-7xl text-primary italic">Enquire</h1>
+          <div className="w-12 h-px bg-pale-gold/40 mx-auto"></div>
           <p className="font-body text-xl text-on-surface-variant italic">Reach out for a bespoke consultation.</p>
         </div>
 
@@ -600,14 +642,14 @@ function EnquiryView() {
           {/* Contact Details */}
           <div className="space-y-12">
             <div className="space-y-6">
-              <h2 className="font-display text-3xl text-primary">Direct Contact</h2>
+              <h2 className="font-display text-3xl text-pale-gold italic">Direct Contact</h2>
               <div className="space-y-4 font-body italic text-on-surface-variant">
-                <a href="mailto:wheatonmike38@outlook.com" className="flex items-center gap-4 hover:text-primary transition-colors">
-                  <Mail className="w-5 h-5 text-primary" />
+                <a href="mailto:wheatonmike38@outlook.com" className="flex items-center gap-4 hover:text-pale-gold transition-colors">
+                  <Mail className="w-5 h-5 text-pale-gold" />
                   <span>wheatonmike38@outlook.com</span>
                 </a>
-                <a href="tel:+447365848799" className="flex items-center gap-4 hover:text-primary transition-colors">
-                  <Phone className="w-5 h-5 text-primary" />
+                <a href="tel:+447365848799" className="flex items-center gap-4 hover:text-pale-gold transition-colors">
+                  <Phone className="w-5 h-5 text-pale-gold" />
                   <span>+44 7365 848799</span>
                 </a>
               </div>
@@ -629,7 +671,7 @@ function EnquiryView() {
           </div>
 
           {/* Form */}
-          <div className="bg-almond/20 p-8 md:p-12 rounded-[2rem] shadow-xl border border-outline-variant/30">
+          <div className="bg-pale-gold/5 p-8 md:p-12 rounded-[2rem] shadow-xl border border-pale-gold/20">
             {isSubmitted ? (
               <div className="h-full flex flex-col items-center justify-center text-center space-y-6 py-12">
                 <CheckCircle className="w-16 h-16 text-primary" />
@@ -676,7 +718,7 @@ function EnquiryView() {
                 </div>
                 <button 
                   type="submit" 
-                  className="w-full py-5 bg-primary text-on-primary font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-xl hover:translate-y-[-2px] transition-all"
+                  className="w-full py-5 bg-pale-gold text-primary font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-xl hover:translate-y-[-2px] transition-all"
                 >
                   Send Inquiry
                 </button>
@@ -698,10 +740,10 @@ function MenuView({ setView }: { setView: (v: View) => void }) {
       className="pb-24 pt-32"
     >
       <section className="px-6 py-16 md:py-24 max-w-3xl mx-auto text-center border-b border-outline-variant/20 mb-20">
-        <span className="font-sans text-[10px] text-secondary uppercase tracking-[0.3em] mb-4 block">Seasonal Offerings</span>
-        <h2 className="font-display text-4xl md:text-6xl text-on-surface mb-6 italic">Service Menu</h2>
+        <span className="font-sans text-[10px] text-pale-gold uppercase tracking-[0.3em] mb-4 block">Artisanal Heritage</span>
+        <h2 className="font-display text-4xl md:text-6xl text-on-surface mb-6 italic">About Our Craft</h2>
         <p className="text-body text-xl text-on-surface-variant mx-auto italic leading-relaxed">
-          A curated selection of home and garden treatments, delivered with artisanal precision and natural care.
+          From the rolling hills of the Cotswolds to the historic estates of the South East, our journey is one of precision, nature, and community.
         </p>
       </section>
 
@@ -732,34 +774,34 @@ function MenuView({ setView }: { setView: (v: View) => void }) {
       </div>
 
       {/* Corporate Partnership section */}
-      <section className="bg-primary text-white py-32 px-6 mt-32">
+      <section className="bg-pale-gold text-primary py-32 px-6 mt-32">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
-            <Award className="text-almond/60 mb-6 w-10 h-10" />
+            <Award className="text-primary/60 mb-6 w-10 h-10" />
             <h3 className="font-display text-4xl md:text-5xl mb-8 leading-tight italic">Corporate &amp; NHS Programs</h3>
-            <p className="font-body text-lg text-white/80 mb-10 leading-relaxed font-light italic">
+            <p className="font-body text-lg text-primary/80 mb-10 leading-relaxed font-light italic">
               We are honored to provide specialized maintenance programs for local institutions and dedicated healthcare professionals. Our premium service tiers include priority scheduling, eco-sensitive materials, and exclusive tiered pricing.
             </p>
             <div className="flex flex-col gap-6 font-body text-base">
-              <div className="flex items-center gap-4 border-b border-white/10 pb-4">
-                <CheckCircle className="text-secondary w-5 h-5" />
+              <div className="flex items-center gap-4 border-b border-primary/10 pb-4">
+                <CheckCircle className="text-primary w-5 h-5" />
                 <span>NHS Staff: Guaranteed 15% Reduction on all Labor</span>
               </div>
-              <div className="flex items-center gap-4 border-b border-white/10 pb-4">
-                <Building2 className="text-secondary w-5 h-5" />
+              <div className="flex items-center gap-4 border-b border-primary/10 pb-4">
+                <Building2 className="text-primary w-5 h-5" />
                 <span>Corporate Campus &amp; Estate Management Contracts</span>
               </div>
             </div>
             <button 
               onClick={() => setView('enquiry')}
-              className="mt-12 px-10 py-4 border border-white/30 text-white font-sans text-xs uppercase tracking-widest hover:bg-white hover:text-primary transition-all font-bold inline-block"
+              className="mt-12 px-10 py-4 border border-primary/30 text-primary font-sans text-xs uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all font-bold inline-block"
             >
               Inquire About Partnerships
             </button>
           </div>
           <div className="order-1 md:order-2">
             <div className="aspect-square rounded-2xl overflow-hidden shadow-3xl">
-              <img src={IMAGES.estateCare} alt="Estate Care" className="w-full h-full object-cover" />
+              <img src={IMAGES.portfolio3} alt="Artisanal Heritage" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -772,7 +814,7 @@ function MenuView({ setView }: { setView: (v: View) => void }) {
         <div className="flex flex-col md:flex-row gap-4 justify-center">
           <button 
             onClick={() => setView('enquiry')}
-            className="bg-primary text-on-primary px-12 py-5 font-sans text-xs uppercase tracking-[0.2em] font-bold"
+            className="bg-pale-gold text-primary px-12 py-5 font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-lg hover:scale-105 transition-transform"
           >
             Book Consultation
           </button>
@@ -793,8 +835,8 @@ function ServiceItem({ title, price, desc }: { title: string, price: string, des
     <div className="group border-b border-outline-variant pb-8 hover:bg-black/[0.02] transition-colors p-4 -m-4">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-4 gap-2">
         <h4 className="font-display text-2xl text-on-surface">{title}</h4>
-        <div className="hidden md:block flex-grow border-b border-dotted border-outline-variant mx-4 mb-2 opacity-30"></div>
-        <span className="font-sans text-[10px] uppercase tracking-widest text-secondary font-bold">{price}</span>
+        <div className="hidden md:block flex-grow border-b border-dotted border-pale-gold/30 mx-4 mb-2"></div>
+        <span className="font-sans text-[10px] uppercase tracking-widest text-pale-gold font-bold">{price}</span>
       </div>
       <p className="font-body text-on-surface-variant/80 italic leading-relaxed">{desc}</p>
     </div>
